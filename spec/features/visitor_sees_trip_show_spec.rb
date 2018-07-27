@@ -49,7 +49,7 @@ describe 'a visitor' do
       trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
 
       visit trip_path(trip1)
-      expect(page).to have_content('Shortest Length: 6')
+      expect(page).to have_content('Shortest Length: 2')
     end
   end
 end
