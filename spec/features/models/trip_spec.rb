@@ -7,7 +7,7 @@ describe Trip do
       trail1 = trip1.trails.create!(length: 4, name: 'bottle run', address: '24 Oak Street')
       trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
 
-      expect(@trip.total).to eq(6)
+      expect(trip1.total).to eq(6)
     end
   end
 end
