@@ -2,3 +2,10 @@
 
 <p>Start: <%= @trip.start_date %></p>
 <p>End: <%= @trip.end_date %></p>
+
+<h2>Trails:</h2>
+<% @trip.trails.each do |trail| %>
+  <%= trail.length %>
+  <%= trail.name %>
+  <%= trail.address %>
+<% end %>
