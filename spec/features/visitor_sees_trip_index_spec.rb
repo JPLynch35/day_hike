@@ -18,9 +18,6 @@ describe 'a visitor' do
 
       click_on trip1.name
       expect(current_path).to eq(trip_path(trip1))
-      expect(page).to have_content(trip1.name)
-      expect(page).to have_content(trip1.start_date)
-      expect(page).to have_content(trip1.end_date)
     end
   end
 end
