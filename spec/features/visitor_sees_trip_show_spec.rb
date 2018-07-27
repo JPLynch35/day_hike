@@ -27,5 +27,29 @@ describe 'a visitor' do
       visit trip_path(trip1)
       expect(page).to have_content('Total Length: 6')
     end
+    it 'see the average trail' do
+      trip1 = Trip.create!(name: 'mytrip1', start_date: DateTime.parse('12/12/2015 12:12'), end_date: DateTime.parse('12/12/2015 20:12'))
+      trail1 = trip1.trails.create!(length: 4, name: 'bottle run', address: '24 Oak Street')
+      trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
+
+      visit trip_path(trip1)
+      expect(page).to have_content('Average Length: 3')
+    end
+    it 'see the longest trail' do
+      trip1 = Trip.create!(name: 'mytrip1', start_date: DateTime.parse('12/12/2015 12:12'), end_date: DateTime.parse('12/12/2015 20:12'))
+      trail1 = trip1.trails.create!(length: 4, name: 'bottle run', address: '24 Oak Street')
+      trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
+
+      visit trip_path(trip1)
+      expect(page).to have_content('Longest Length: 4')
+    end
+    it 'see the shortest trail' do
+      trip1 = Trip.create!(name: 'mytrip1', start_date: DateTime.parse('12/12/2015 12:12'), end_date: DateTime.parse('12/12/2015 20:12'))
+      trail1 = trip1.trails.create!(length: 4, name: 'bottle run', address: '24 Oak Street')
+      trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
+
+      visit trip_path(trip1)
+      expect(page).to have_content('Shortest Length: 6')
+    end
   end
 end
