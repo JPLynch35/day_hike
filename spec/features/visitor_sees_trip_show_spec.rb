@@ -19,5 +19,13 @@ describe 'a visitor' do
       expect(page).to have_content(trail2.name)
       expect(page).to have_content(trail2.address)
     end
+    it 'see the trip length total' do
+      trip1 = Trip.create!(name: 'mytrip1', start_date: DateTime.parse('12/12/2015 12:12'), end_date: DateTime.parse('12/12/2015 20:12'))
+      trail1 = trip1.trails.create!(length: 4, name: 'bottle run', address: '24 Oak Street')
+      trail2 = trip1.trails.create!(length: 2, name: 'pizza pie', address: '50 Oak Street')
+
+      visit trip_path(trip1)
+      expect(page).to have_content(Total Length: 6)
+    end
   end
 end

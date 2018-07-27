@@ -5,5 +5,6 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.includes(:trails).find(params[:id])
+    @trip_total = @trip.total
   end
 end
